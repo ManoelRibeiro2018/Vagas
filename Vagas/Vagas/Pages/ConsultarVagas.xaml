@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Vagas.Pages.ConsultarVagas">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Vagas" TextColor="Orange" FontSize="24"/>
+                <Label Text="encontre seu emprego aqui" TextColor="Orange" FontSize="12"/>
+            </StackLayout>
+            <Entry Placeholder="Pesquisar"/>
+            <Label x:Name="lblCount"  FontSize="12"/>
+            <ListView x:Name="ListaVagas">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Text="{Binding Nome}" FontAttributes="Bold" Grid.Column="0"/>
+                                <Label Text="{Binding Empresa}" Grid.Column="0"/>
+                                <Label Text="{Binding Cidade}" Grid.Column="0"/>
+
+                                <Label Text="+Detalhe" TextColor="Orange">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" Command="{Binding .}"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
